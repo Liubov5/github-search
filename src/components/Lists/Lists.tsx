@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import Item from "../Item/Item";
 import { Col, Row } from "react-bootstrap";
 
@@ -6,10 +7,6 @@ type Props = {
 };
 
 const Lists = (props: Props) => {
-  console.log(props.list);
-
-  //let item:IRepository = [];
-
   return (
     <div>
       <Row>
@@ -21,6 +18,6 @@ const Lists = (props: Props) => {
       </Row>
     </div>
   );
-};
+}
 
 export default Lists;

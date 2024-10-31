@@ -16,6 +16,11 @@ class RepositoriesStore {
         makeAutoObservable(this);
     }
 
+    setPage = (value:number) => {
+        this.page = value;
+        this.getRepositoriesAction();
+    }
+
     getRepositoriesAction =  async() => {
         try {
             this.isLoading = true;
