@@ -1,6 +1,4 @@
-import React from "react";
 import Item from "../Item/Item";
-import IRepository from "../../types/types";
 import { Col, Row } from "react-bootstrap";
 
 type Props = {

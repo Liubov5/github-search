@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useMemo, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import "./App.css";
 import repositoriesStore from "./store/repositories-store";
 import { observer } from "mobx-react-lite";
@@ -28,6 +28,7 @@ export const App = observer(() => {
   useEffect(()=>{
     if(!isLoading) {
       setTotalPagesCount(getPageCount(totalCount, perPage));
+
     }
     //кол-во страницы число
     console.log("кол-во страниц", totalPagesCount);

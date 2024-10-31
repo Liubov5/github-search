@@ -1,4 +1,3 @@
-import React from 'react'
 import Card from "react-bootstrap/Card";
 import IRepository from '../../types/types';
 import styles from "./item.module.css";
