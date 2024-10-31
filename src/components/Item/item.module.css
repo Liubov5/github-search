@@ -1,0 +1,13 @@
+.cardCustom {
+    height: 300px !important;
+    margin-bottom: 50px;
+}
+
+.cardCustom__text {
+    overflow: hidden;     /* Скрывает текст, который выходит за пределы блока */
+    text-overflow: ellipsis; /* Добавляет многоточие в конце обрезанного текста */
+    /* white-space:nowrap;  */
+    height: 100px;
+    /* background-color: blue; */
+}
+ 
