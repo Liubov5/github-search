@@ -3,9 +3,9 @@ import Badge from "react-bootstrap/Badge";
 import Stack from "react-bootstrap/Stack";
 import styles from "./Tags.module.css";
 import repositoriesStore from "../../store/repositories-store";
-type Props = {};
 
-const initialLanguages: string[] = [
+
+const languages: string[] = [
   "JAVASCRIPT",
   "PYTHON",
   "C++",
@@ -19,8 +19,8 @@ const initialLanguages: string[] = [
   "RUBY",
 ];
 
-const Tags = (props: Props) => {
-  const [languages, setLanguages] = useState<string[]>(initialLanguages);
+const Tags = () => {
+  
   const {setLanguage, language} = repositoriesStore;
  
 
