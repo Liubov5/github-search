@@ -1,0 +1,14 @@
+.active {
+    border:3px solid green;
+    box-shadow: 1px 2px 2px gray;
+}
+
+.tag {
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+.tag:hover {
+    transform: scale(1.5);
+    transition: .5s;
+}

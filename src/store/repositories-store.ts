@@ -9,8 +9,9 @@ class RepositoriesStore {
     isLoading: boolean = false;
     totalCount: number = 0;
     perPage: number =  20;
-    q: string = '';
+    q: string = 'tic tac toe';
     page:number = 1;
+    language:string = 'python';
 
     constructor () {
         makeAutoObservable(this);
@@ -21,10 +22,20 @@ class RepositoriesStore {
         this.getRepositoriesAction();
     }
 
+    setQ = (value:string)=> {
+        this.q = value;
+        this.getRepositoriesAction();
+    }
+
+    setLanguage = (value:string)=>{
+        this.language = value;
+        this.getRepositoriesAction();
+    }
+
     getRepositoriesAction =  async() => {
         try {
             this.isLoading = true;
-            const result = await fetchRepositories({perPage: this.perPage, page: this.page});
+            const result = await fetchRepositories({perPage: this.perPage, page: this.page, q:this.q, language: this.language});
 
             runInAction(()=>{
                 this.list = result.data.items;

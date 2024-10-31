@@ -1,4 +1,3 @@
-import { observer } from "mobx-react-lite";
 import Item from "../Item/Item";
 import { Col, Row } from "react-bootstrap";
 

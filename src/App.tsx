@@ -7,6 +7,9 @@ import Lists from "./components/Lists/Lists";
 import { getPageCount, getPagesArray } from "./utils/pages";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
+import Search from "./components/Search/Search";
+import Spinner from 'react-bootstrap/Spinner';
+import Tags from "./components/Tags/Tags";
 
 export const App = observer(() => {
   const { list, isLoading, getRepositoriesAction, totalCount, perPage, page, setPage } =
@@ -29,29 +32,36 @@ export const App = observer(() => {
   }, [isLoading]); //Если передать переменные в массив зависимостей, эффект будет выполняться каждый раз, когда эти переменные изменяются. - свойство из стейт менеджера поменялось и мы его просмотреои
 
   useEffect(() => {
-    console.log("кол-во страниц", totalPagesCount);
+    
     setPagesArray(getPagesArray(totalPagesCount))
     
   }, [totalPagesCount]); //выше был вызов этого стейта, поэтому отработала эта штука
 
   useEffect(()=>{
-    setShowedPagesArray(pagesArray.slice(0, 10));
-    console.log("pagesarray", pagesArray);
+    changeShowedPagesArray();
+  },[pagesArray])
+
+  const changeShowedPagesArray = () => {
+    setShowedPagesArray(pagesArray.slice(0, 10));   
     if (currentPage > 4) {
       setShowedPagesArray(pagesArray.slice(currentPage - 1, currentPage + 10));
     }
-  },[pagesArray])
-
+  }
 
   useEffect(()=>{
     setPage(currentPage);
+    changeShowedPagesArray();
   }, [currentPage])
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return  <Spinner animation="border" role="status">
+  <span className="visually-hidden mx-auto">Loading...</span>
+</Spinner>;
 
   return (
     <>
-      <Container>
+      <Container className="mt-5">
+        <Search />
+        <Tags />
         <Lists list={list} />
 
         <Pagination>
@@ -61,7 +71,7 @@ export const App = observer(() => {
             </Pagination.Item>
           )}
 
-          {showedPagesArray && showedPagesArray.map((p) => {
+          {showedPagesArray.map((p) => {
             return (
               <Pagination.Item
                 onClick={() => setCurrentPage(p)}
